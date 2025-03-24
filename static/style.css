@@ -32,6 +32,12 @@ h1{
     background: linear-gradient(135deg, #283593, #3f51b5);
 }
 
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
 /* 横幅調整：テーブルが画面に収まるよう調整 */
 .table {
     display: grid;

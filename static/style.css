@@ -1,0 +1,129 @@
+/*title*/
+h1{
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+/* 非金属のボタン色（オレンジ） */
+.non-metal {
+    background: linear-gradient(135deg, #ff9800, #ffcc80);
+}
+
+.non-metal:hover {
+    background: linear-gradient(135deg, #f57c00, #ffb74d);
+}
+
+/* ランタノイドのボタン色（ライトブルー） */
+.lanthanoid {
+    background: linear-gradient(135deg, gray, gray);
+}
+
+.lanthanoid:hover {
+    background: linear-gradient(135deg, gray, gray);
+}
+
+/* アクチノイドのボタン色（ダークブルー） */
+.actinoid {
+    background: linear-gradient(135deg, #3949ab, #5c6bc0);
+}
+
+.actinoid:hover {
+    background: linear-gradient(135deg, #283593, #3f51b5);
+}
+
+/* 横幅調整：テーブルが画面に収まるよう調整 */
+.table {
+    display: grid;
+    grid-template-columns: repeat(18, 1fr); /* 18列 */
+    grid-template-rows: repeat(7, 1fr); /* 7行 */
+    gap: 5px; /* ボタン同士の隙間を小さく */
+    justify-content: center;
+    width: 100%;  /* 横幅100%で収める */
+    max-width: 100vw; /* 画面の横幅に合わせてテーブルを広げる */
+    padding: 10px;
+    overflow: hidden; /* 画面に収まるようにオーバーフローを隠す */
+    box-sizing: border-box;
+}
+
+/* 元素ボタン */
+.element {
+    width: 100%;
+    height: 100%;
+    min-width: 50px;  /* 横幅をさらに縮小 */
+    min-height: 50px;
+    font-size: 2vw;   /* 画面サイズに応じてフォントサイズ調整 */
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #42a5f5, #90caf9); /* デフォルトの色 */
+    color: white;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    transition: 0.3s;
+}
+
+.element:hover {
+    background: linear-gradient(135deg, #1e88e5, #64b5f6);
+    transform: scale(1.1);
+}
+
+/* 水素 (H) のボタンだけオレンジ系に */
+.hydrogen {
+    background: linear-gradient(135deg, #ff9800, #ffcc80);
+}
+
+.hydrogen:hover {
+    background: linear-gradient(135deg, #f57c00, #ffb74d);
+}
+
+/* 非金属のボタン色（オレンジ） */
+.non-metal {
+    background: linear-gradient(135deg, #ff9800, #ffcc80);
+}
+
+.non-metal:hover {
+    background: linear-gradient(135deg, #f57c00, #ffb74d);
+}
+
+/* ランタノイドのボタン色（ライトブルー） */
+.lanthanoid {
+    background: linear-gradient(135deg, gray, gray);
+}
+
+.lanthanoid:hover {
+    background: linear-gradient(135deg, gray, gray);
+}
+
+/* アクチノイドのボタン色（ダークブルー） */
+.actinoid {
+    background: linear-gradient(135deg, gray, gray);
+}
+
+.actinoid:hover {
+    background: linear-gradient(135deg, gray, gray);
+}
+
+/* ポップアップの位置を上に調整 */
+.info-popup {
+    position: absolute;
+    top: 20px; /* ポップアップを画面上部に表示 */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: greenyellow;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: none;
+    z-index: 9999;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    cursor: pointer;
+}

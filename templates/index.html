@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Interactive Periodic Table</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>The Interactive Periodic Table</h1>
+
+    <div class="table-container">
+        <div class="table">
+            {% for element in elements %}
+                <button class="element
+                    {% if element.symbol == 'H' %} hydrogen {% endif %}
+                    {% if element.symbol in ['He', 'B', 'Si', 'As', 'Te', 'At', 'C', 'N', 'O', 'F', 'Ne', 'P', 'S', 'Cl', 'Ar', 'Se', 'Br', 'Kr', 'I', 'Xe', 'Rn', 'Og'] %} non-metal {% endif %}
+                    {% if element.symbol in ['La', 'Ce', 'Pr', 'Nd', 'Pm', 'Sm', 'Eu', 'Gd', 'Tb', 'Dy', 'Ho', 'Er', 'Tm', 'Yb', 'Lu'] %} lanthanoid {% endif %}
+                    {% if element.symbol in ['Ac', 'Th', 'Pa', 'U', 'Np', 'Pu', 'Am', 'Cm', 'Bk', 'Cf', 'Es', 'Fm', 'Md', 'No', 'Lr'] %} actinoid {% endif %}"
+                    style="grid-row: {{ element.row }}; grid-column: {{ element.col }};"
+                    data-symbol="{{ element.symbol }}">
+                    {{ element.symbol }}
+                </button>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- ポップアップ風の元素情報エリア -->
+    <div id="element-info" class="info-popup">
+        <button class="close-btn" onclick="hideElementInfo()">✖</button>
+        <h2 id="element-name"></h2>
+        <p><strong>原子番号:</strong> <span id="atomic-number"></span></p>
+        <p id="element-description"></p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".element").forEach(button => {
+                button.addEventListener("click", function () {
+                    const symbol = this.getAttribute("data-symbol");
+                    showElementInfo(symbol);
+                });
+            });
+        });
+
+        function showElementInfo(symbol) {
+            fetch(`/element/${symbol}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("element-name").textContent = data.name;
+                    document.getElementById("atomic-number").textContent = data.atomic_number;
+                    document.getElementById("element-description").textContent = data.description;
+                    document.getElementById("element-info").style.display = "block";
+                    document.getElementById("element-info").style.top = "20px";  // ポップアップ位置を上に調整
+                })
+                .catch(error => {
+                    console.error("エラー:", error);
+                    alert("元素データの取得に失敗しました。");
+                });
+        }
+
+        function hideElementInfo() {
+            document.getElementById("element-info").style.display = "none";
+        }
+    </script>
+</body>
+</html>

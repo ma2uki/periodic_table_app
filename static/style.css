@@ -42,6 +42,7 @@ h1{
     width: 100%;  /* 横幅100%で収める */
     padding: 10px;
     box-sizing: border-box;
+    overflow-x: auto; /* 横スクロールを有効にする */
 }
 
 @media screen and (max-width: 600px) {
